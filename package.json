@@ -6,8 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "lint": "npx stylelint **/*.scss && nx lint",
-    "deploy": "nx build --output-path=docs --base-href=https://noamyg.github.io/fmr-users/"
+    "lint": "npx stylelint **/*.scss && nx lint"
   },
   "private": true,
   "dependencies": {
