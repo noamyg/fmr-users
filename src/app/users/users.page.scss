@@ -1,0 +1,24 @@
+@use 'node_modules/animatewithsass/animate';
+
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  
+  @include animate.fadeIn;
+    
+  .card {
+    flex: 1;
+    min-width: 240px;
+    max-width: 500px;
+  }
+}
+
+.floating-buttons-wrapper {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 1.5em;
+  height: 1.5em;
+}

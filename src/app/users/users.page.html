@@ -1,0 +1,14 @@
+<div class="cards-wrapper">
+  <div class="card" *ngFor="let user of users$ | async">
+    <fmr-user-card
+      [user]="user"
+      [total]="(usersTotalOrders$ | async)?.[user.id]">
+      [isFavorite]="!!(favoriteUserIds$ | async)?.includes(user.id)"></fmr-user-card>
+  </div>
+</div>
+<div class="floating-buttons-wrapper">
+  <p-button
+    icon="pi pi-plus"
+    styleClass="p-button-rounded p-button-success"
+    (click)="openUserFormDialog()"></p-button>
+</div>

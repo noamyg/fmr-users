@@ -1,0 +1,22 @@
+<div class="field">
+  <fmr-input [type]="'number'" [control]="$any(formGroup.get('id'))" label="User ID"></fmr-input>
+</div>
+<div class="field">
+  <fmr-input [control]="$any(formGroup.get('image'))" label="Image URL"></fmr-input>
+</div>
+<div class="field">
+  <fmr-input [control]="$any(formGroup.get('name'))" label="Name"></fmr-input>
+</div>
+<div class="field">
+  <fmr-dropdown
+    [control]="$any(formGroup.get('status'))"
+    [options]="statusOptions"
+    label="Species"></fmr-dropdown>
+</div>
+<p-button
+  [disabled]="formGroup.pristine || !formGroup.valid"
+  label="Save"
+  icon="pi pi-check"
+  styleClass="p-button"
+  (click)="save()"></p-button>
+<fmr-user-orders *ngIf="user" [user]="user"></fmr-user-orders>

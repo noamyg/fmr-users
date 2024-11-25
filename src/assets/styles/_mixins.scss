@@ -1,0 +1,72 @@
+@use 'functions';
+@use 'variables';
+
+@mixin placeholder {
+  font-size: 0.75em;
+}
+
+@mixin clickable {
+  cursor: pointer;
+}
+
+@mixin hover {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin hover-focus {
+  &:focus,
+  &:hover {
+    @content;
+  }
+}
+
+@mixin plain-hover-focus {
+  &,
+  &:focus,
+  &:hover {
+    @content;
+  }
+}
+
+@mixin hover-focus-active {
+  &:focus,
+  &:active,
+  &:hover {
+    @content;
+  }
+}
+
+@mixin text-emphasis-variant($parent, $color) {
+  #{$parent} {
+    color: $color !important;
+  }
+
+  a#{$parent} {
+    @include hover-focus {
+      color: darken($color, 10%) !important;
+    }
+  }
+}
+
+@mixin nowrap($with_ellipsis: false) {
+  white-space: nowrap;
+  overflow: hidden;
+  
+  @if $with_ellipsis {
+    text-overflow: ellipsis;
+  }
+}
+
+@mixin user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin box-shadow($shade-level) {
+  -webkit-box-shadow: 0 0.2rem 0.4rem 0 functions.get-shadow($shade-level);
+  box-shadow: 0 0.2rem 0.4rem 0 functions.get-shadow($shade-level);
+}

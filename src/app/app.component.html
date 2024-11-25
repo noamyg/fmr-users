@@ -1,0 +1,18 @@
+<fmr-header></fmr-header>
+<ng-container *ngIf="usersCallState$ | async as usersCallState">
+  <fmr-loader *ngIf="usersCallState === ProcessState.PROCESSING; else content"></fmr-loader>
+  <ng-template #content>
+    <div class="content" role="main">
+      <div *ngIf="!getCallStateError(usersCallState); else error" class="router-outlet">
+        <router-outlet></router-outlet>
+      </div>
+      <ng-template #error>
+        <div class="error">
+          {{ getCallStateError(usersCallState) }}
+          <br />
+          <a href="javascript:void(0);" (click)="bootstrapData()">Try again</a>
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</ng-container>

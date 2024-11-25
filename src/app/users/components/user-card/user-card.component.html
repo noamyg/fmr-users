@@ -1,0 +1,28 @@
+<div class="card" [class.selected]="(selectedUserId$ | async) === user.id" [style.background-image]="'url(' + user.image + ')'" (click)="setSelectedUser()">
+  <div class="favorite-button-container ml-auto">
+    <i
+      class="pi clickable"
+      [class.pi-star-fill]="isFavorite"
+      [class.pi-star]="!isFavorite"
+      (click)="toggleFavorite()"></i>
+  </div>
+  <div class="card-overlay">
+    <div class="top-row">
+      <span class="title">{{ user.name }}</span>
+      <div class="buttons">
+        <i class="pi pi-trash clickable" (click)="deleteUser()"></i>
+        <i class="pi pi-pencil clickable" (click)="openUserDialog()"></i>
+      </div>
+    </div>
+    <div class="card-details">
+      <p>${{ total }}</p>
+      <div
+        class="ml-auto status-dot"
+        [ngClass]="{
+          alive: user.status === UserStatus.ONLINE,
+          dead: user.status === UserStatus.OFFLINE
+        }"></div>
+      <p>{{ user.status }}</p>
+    </div>
+  </div>
+</div>
